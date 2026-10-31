@@ -50,7 +50,7 @@ This uses $`ZU_\theta Z=U_\theta^\dagger`$. The increment $`N_u-N_s`$ is Poisson
 ```math
 \langle1_s|\rho_\theta^{\mathrm{obs}}(t)|1_u\rangle
 =\frac{e^{-1}}{t}
-\operatorname{Re}
+\mathrm{Re}
 \exp\!\left[
 |s-u|\left(e^{i2\theta}-1\right)
 \right].
@@ -64,12 +64,12 @@ Integrating (O5) against the uniform mode gives
 ```math
 \begin{aligned}
 p_\theta(t)
-&=\operatorname{Tr}\!\left[P_f\rho_\theta^{\mathrm{obs}}(t)\right]\\
+&=\mathrm{Tr}\!\left[P_f\rho_\theta^{\mathrm{obs}}(t)\right]\\
 &=\frac{2e^{-1}}{t^2}
-\operatorname{Re}\int_0^t
+\mathrm{Re}\int_0^t
 (t-v)e^{v(e^{i2\theta}-1)}\,dv\\
 &=e^{-1}F(z),\qquad
-F(z)=2\operatorname{Re}\frac{e^z-1-z}{z^2},\qquad
+F(z)=2\mathrm{Re}\frac{e^z-1-z}{z^2},\qquad
 z=t(e^{i2\theta}-1),
 \end{aligned}
 \tag{O6}
@@ -186,7 +186,7 @@ To measure (O14), project the position register onto $`|u_n\rangle`$. Accept on 
 Since the effect is block diagonal in both field counts, those counts can be sampled classically. The following uncapped procedure specifies the exact bit channel for an arbitrary input system state. Its finite implementation uses the conditioned count distribution described below.
 
 1. With probability $`1-e^{-1}`$, output zero. This combines all observer counts other than one.
-2. Otherwise sample $`n\sim\operatorname{Pois}(t)`$, and prepare the position register in $`|u_n\rangle`$.
+2. Otherwise sample $`n\sim\mathrm{Pois}(t)`$, and prepare the position register in $`|u_n\rangle`$.
 3. At each slot $`j=0,\ldots,n`$, apply $`Z`$ to the system conditioned on $`k=j`$. Between adjacent slots apply $`U_\theta`$, for exactly $`n`$ oracle calls in total.
 4. Discard the system and measure $`E_n`$ as described above.
 
@@ -203,14 +203,14 @@ This is precisely the conditional system-word state for those field counts. The 
 
 For a worst-case query bound, choose $`n_{\max}`$ and sample the Poisson law conditioned on $`n\leq n_{\max}`$. Its finite list is computed by starting at the Poisson mode, applying the stable outward recurrence, and normalizing the retained weights. This avoids a separate calculation of the exponentially small factor $`e^{-t}`$.
 
-Write $`\delta=\Pr(\operatorname{Pois}(t)>n_{\max})`$. The observer-one channel is a convex mixture of its normalized retained-count and omitted-count channels, with weights $`1-\delta`$ and $`\delta`$. Replacing this mixture by its retained-count channel changes half diamond distance by at most $`\delta`$. The observer-one branch has weight $`e^{-1}`$, so the total bit/reference channel error is at most $`e^{-1}\delta`$. This argument is uniform over input references because each normalized count-sector average is a channel.
+Write $`\delta=\Pr(\mathrm{Pois}(t)>n_{\max})`$. The observer-one channel is a convex mixture of its normalized retained-count and omitted-count channels, with weights $`1-\delta`$ and $`\delta`$. Replacing this mixture by its retained-count channel changes half diamond distance by at most $`\delta`$. The observer-one branch has weight $`e^{-1}`$, so the total bit/reference channel error is at most $`e^{-1}\delta`$. This argument is uniform over input references because each normalized count-sector average is a channel.
 
 A concrete error allocation takes $`\delta\leq\epsilon/4`$, bounds the combined error of all classical sampling and known coins by $`\epsilon/4`$, and allocates $`\epsilon/4`$ each to the uniform-position preparation and its final projection circuit. The elementary Poisson bound then gives $`n_{\max}=O(t+\log(1/\epsilon)+1)`$. The circuit errors can be bounded in operator norm uniformly over every sampled $`n\leq n_{\max}`$.
 
 The count table, a uniform-position state, and the known coin require no QRAM. A direct compiled implementation has
-$`O(n_{\max}\operatorname{polylog}(n_{\max}/\epsilon))`$ known-gate cost and uses $`O(\log(n_{\max}+1))`$ ancillary qubits beyond the input system. Classical compilation has the same count dependence, with the additional polynomial dependence on the input and arithmetic bit lengths specified in resources.md. Thus the one-bit task has $`\Theta(t)`$ query complexity at constant error, with an explicit efficient measurement in the encoded field model.
+$`O(n_{\max}\mathrm{polylog}(n_{\max}/\epsilon))`$ known-gate cost and uses $`O(\log(n_{\max}+1))`$ ancillary qubits beyond the input system. Classical compilation has the same count dependence, with the additional polynomial dependence on the input and arithmetic bit lengths specified in resources.md. Thus the one-bit task has $`\Theta(t)`$ query complexity at constant error, with an explicit efficient measurement in the encoded field model.
 
-The count $`n`$ is sampled classically before the position circuit is compiled. Only the selected $`O(n+1)`$-rotation loader and its inverse are needed. The conditional known-gate bound is $`O((n+1)\operatorname{polylog}((n+2)/\epsilon))`$, which includes $`n=0`$, while the unknown-unitary query count is exactly $`n`$. No coherent or explicitly stored family of loaders for all $`n\leq n_{\max}`$ is assumed, so there is no hidden quadratic compilation table.
+The count $`n`$ is sampled classically before the position circuit is compiled. Only the selected $`O(n+1)`$-rotation loader and its inverse are needed. The conditional known-gate bound is $`O((n+1)\mathrm{polylog}((n+2)/\epsilon))`$, which includes $`n=0`$, while the unknown-unitary query count is exactly $`n`$. No coherent or explicitly stored family of loaders for all $`n\leq n_{\max}`$ is assumed, so there is no hidden quadratic compilation table.
 
 For the lower-bound input, a useful independent expression is
 
@@ -224,7 +224,7 @@ h_n(\theta)
 \right],\\
 p_\theta(t)
 &=e^{-1}\sum_{n=0}^{\infty}
-\operatorname{Pois}_t(n)\,h_n(\theta).
+\mathrm{Pois}_t(n)\,h_n(\theta).
 \end{aligned}
 \tag{O16}
 ```

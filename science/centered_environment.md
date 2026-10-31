@@ -17,9 +17,9 @@ p_\mu(n)=e^{-\mu}\frac{\mu^n}{n!}.
 For any input $`\rho_{SR}`$, the field-reference output has blocks
 
 ```math
-\bigl[(\Gamma_\mu\otimes\operatorname{id}_R)(\rho_{SR})\bigr]_{n,m}
+\bigl[(\Gamma_\mu\otimes\mathrm{id}_R)(\rho_{SR})\bigr]_{n,m}
 =\sqrt{p_\mu(n)p_\mu(m)}\,
-\operatorname{Tr}_S
+\mathrm{Tr}_S
 \left[
 (U^n\otimes I_R)\rho_{SR}(U^{-m}\otimes I_R)
 \right].
@@ -53,10 +53,10 @@ U^{n-a}|\psi\rangle\otimes|n\rangle.
 Then $`V_A=(U^a\otimes I)\widehat V_A`$. For every reference-assisted input,
 
 ```math
-\operatorname{Tr}_S
+\mathrm{Tr}_S
 \left[(V_A\otimes I_R)\rho_{SR}(V_A^\dagger\otimes I_R)\right]
 =
-\operatorname{Tr}_S
+\mathrm{Tr}_S
 \left[(\widehat V_A\otimes I_R)\rho_{SR}
 (\widehat V_A^\dagger\otimes I_R)\right].
 \tag{C5}
@@ -97,7 +97,7 @@ b=\lceil\mu+d+2x\rceil.
 \tag{C8}
 ```
 
-If $`N\sim\operatorname{Pois}(\mu)`$, then
+If $`N\sim\mathrm{Pois}(\mu)`$, then
 
 ```math
 \Pr(N<a)+\Pr(N>b)\leq 2e^{-x}=\epsilon^2/4,

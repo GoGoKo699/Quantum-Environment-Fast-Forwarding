@@ -85,7 +85,7 @@ For an arbitrary input $`\rho_{SR}`$, define
 
 ```math
 \sigma_R^\theta
-=\operatorname{Tr}_S
+=\mathrm{Tr}_S
 \!\left[(P_\theta\otimes I_R)\rho_{SR}
 (P_\theta\otimes I_R)\right].
 ```

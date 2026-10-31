@@ -10,11 +10,11 @@ For one unitary jump $`L=\sqrt{\lambda}\,U`$, put $`\mu=\lambda t`$. In the unif
 
 ```math
 \left[
-(\Gamma_\mu\otimes\operatorname{id}_R)(\rho_{SR})
+(\Gamma_\mu\otimes\mathrm{id}_R)(\rho_{SR})
 \right]_{n,m}
 =
 \sqrt{p_\mu(n)p_\mu(m)}
-\operatorname{Tr}_S
+\mathrm{Tr}_S
 \left[
 (U^n\otimes I_R)\rho_{SR}(U^{-m}\otimes I_R)
 \right].
@@ -24,7 +24,7 @@ For one unitary jump $`L=\sqrt{\lambda}\,U`$, put $`\mu=\lambda t`$. In the unif
 Let $`\Delta_{\mathrm{num}}`$ dephase this complete number basis. On its diagonal,
 
 ```math
-\operatorname{Tr}_S
+\mathrm{Tr}_S
 \left[
 (U^n\otimes I_R)\rho_{SR}(U^{-n}\otimes I_R)
 \right]
@@ -37,7 +37,7 @@ Consequently,
 ```math
 \left[
 (\Delta_{\mathrm{num}}\circ\Gamma_\mu)
-\otimes\operatorname{id}_R
+\otimes\mathrm{id}_R
 \right](\rho_{SR})
 =
 \left(\sum_{n=0}^{\infty}p_\mu(n)|n\rangle\langle n|\right)
@@ -106,12 +106,12 @@ q\geq
 
 for a simulator with half diamond error at most $`\epsilon<1/4`$ on both inputs. This lower bound uses the same controlled-$`U`$ access as the centered field algorithm.
 
-For the upper bound, sample $`N\sim\operatorname{Pois}(\mu)`$, apply $`U^N`$, and keep the system. The exact algorithm has expected query count $`\mu`$. To obtain a worst-case bound, choose $`N_{\max}`$ with Poisson tail probability $`\delta`$, and use the identity channel on the omitted tail. The resulting channel is
+For the upper bound, sample $`N\sim\mathrm{Pois}(\mu)`$, apply $`U^N`$, and keep the system. The exact algorithm has expected query count $`\mu`$. To obtain a worst-case bound, choose $`N_{\max}`$ with Poisson tail probability $`\delta`$, and use the identity channel on the omitted tail. The resulting channel is
 
 ```math
 \widetilde\Phi
-=\sum_{n=0}^{N_{\max}}p_\mu(n)\operatorname{Ad}_{U^n}
-+\delta\,\operatorname{id}.
+=\sum_{n=0}^{N_{\max}}p_\mu(n)\mathrm{Ad}_{U^n}
++\delta\,\mathrm{id}.
 \tag{P10}
 ```
 
@@ -137,13 +137,13 @@ $`\mathcal D[L](\rho)=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\}`$, direct exp
 For $`U_\theta=e^{-i\theta X}`$, separating its identity and Pauli parts yields the more specific exact identity
 
 ```math
-\operatorname{Ad}_{U_\theta}-\operatorname{id}
+\mathrm{Ad}_{U_\theta}-\mathrm{id}
 =
 -i\left[
 \frac{\sin(2\theta)}2X,\,\cdot
 \right]
 +\sin^2\theta\,
-\left(\operatorname{Ad}_X-\operatorname{id}\right).
+\left(\mathrm{Ad}_X-\mathrm{id}\right).
 \tag{P12}
 ```
 

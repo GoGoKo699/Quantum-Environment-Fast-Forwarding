@@ -24,7 +24,7 @@ The list can be computed stably without evaluating $`e^{-\mu}`$ or $`\mu^n/n!`$ 
 \tag{R2}
 ```
 
-Each outward multiplier is at most one. Normalize by the sum of the computed weights. Finite arithmetic errors therefore do not undergo exponential amplification in this recurrence. To make the input-precision cost explicit, let $`B_\mu`$ be the bit length of the supplied mean and take arithmetic precision $`P=O(B_\mu+\log(\mu+W+2)+\log((W+1)/\eta))`$. The weights and rotation data can be computed with $`O((W+1)\operatorname{poly}(P))`$ classical bit operations and $`O((W+1)P)`$ bits of working storage. These conservative bounds follow by propagating the absolute roundoff error through $`W`$ contractive recurrence steps and allocating an $`\ell_1`$ probability error of order $`\eta^2`$. When the classical input has polylogarithmic description length, this is $`W`$ times polylogarithmic overhead.
+Each outward multiplier is at most one. Normalize by the sum of the computed weights. Finite arithmetic errors therefore do not undergo exponential amplification in this recurrence. To make the input-precision cost explicit, let $`B_\mu`$ be the bit length of the supplied mean and take arithmetic precision $`P=O(B_\mu+\log(\mu+W+2)+\log((W+1)/\eta))`$. The weights and rotation data can be computed with $`O((W+1)\mathrm{poly}(P))`$ classical bit operations and $`O((W+1)P)`$ bits of working storage. These conservative bounds follow by propagating the absolute roundoff error through $`W`$ contractive recurrence steps and allocating an $`\ell_1`$ probability error of order $`\eta^2`$. When the classical input has polylogarithmic description length, this is $`W`$ times polylogarithmic overhead.
 
 The normalization and tree-rotation angles are computed classically. A list of $`O(W)`$ angles, each to $`O(\log(W/\eta))`$ useful output bits plus arithmetic guard bits, is stored explicitly. It can be compiled into a sequence of gates. Choosing the operator-norm synthesis error of each of the $`O(W)`$ rotations to be $`O(\eta/(W+1))`$ keeps the total preparation error $`O(\eta)`$. A fixed inverse-closed universal gate set admits polylogarithmic single-qubit synthesis overhead by the Solovay–Kitaev construction [DN05]. A chosen gate set may allow sharper synthesis bounds; these are not needed here.
 
@@ -42,12 +42,12 @@ With truncation error and preparation error allocated as in [centered_environmen
 \text{forward queries}&=W,\\
 \text{known gates}&=
 O\!\left(
-W\,[\,\ell+\operatorname{polylog}(W/\epsilon)\,]
-+\operatorname{poly}(\ell)
+W\,[\,\ell+\mathrm{polylog}(W/\epsilon)\,]
++\mathrm{poly}(\ell)
 \right),\\
 \text{quantum workspace beyond }S&=O(\ell+\log(W+1)),\\
 \text{compiled angle/circuit storage}&=
-O\!\left((W+1)\operatorname{polylog}((\mu+W+1)/\epsilon)\right)
+O\!\left((W+1)\mathrm{polylog}((\mu+W+1)/\epsilon)\right)
 \text{ bits}.
 \end{aligned}
 \tag{R3}
@@ -60,7 +60,7 @@ For commuting fields, prepare the count registers independently, allocate their 
 ## General exact word code
 
 For arbitrary unitary jumps, use the exact global count-and-word encoding from (M8)–(M9). Let $`\mu=\Lambda t`$, and choose $`N_{\max}`$ so that
-$`\delta=\Pr(\operatorname{Pois}(\mu)>N_{\max})\leq\epsilon^2/4`$.
+$`\delta=\Pr(\mathrm{Pois}(\mu)>N_{\max})\leq\epsilon^2/4`$.
 Prepare the normalized truncated coherent count and, conditioned on it, $`N`$ independent coherent labels with amplitudes $`\sqrt{\lambda_j/\Lambda}`$. Padded slots are put in a distinct inactive symbol. Then apply the corresponding chronological jump product and discard the system.
 
 The ideal truncated isometry has overlap $`\sqrt{1-\delta}`$ with the exact isometry for every reference-assisted input. It therefore has half diamond error at most $`\sqrt{\delta}`$. Preparation and synthesis can use the remaining error budget. A choice
@@ -82,7 +82,7 @@ If a phase-referenced coherent SELECT oracle over the $`m`$ jumps is supplied, t
 A straightforward padded word register uses
 $`O(N_{\max}\log(m+1)+\log(N_{\max}+1))`$ qubits.
 With a compiled $`m`$-amplitude label state, one may charge $`O(m)`$ rotations per occupied-or-inactive slot. Count preparation, label preparation, occupancy control, and gate synthesis then have cost
-$`O(N_{\max}\operatorname{poly}(m,\log(N_{\max}/\epsilon)))`$ known gates and comparable explicit classical compilation cost. This loose bound is sufficient for fixed $`m`$; it does not claim an optimal dependence on $`m`$.
+$`O(N_{\max}\mathrm{poly}(m,\log(N_{\max}/\epsilon)))`$ known gates and comparable explicit classical compilation cost. This loose bound is sufficient for fixed $`m`$; it does not claim an optimal dependence on $`m`$.
 
 No ordered-time discretization is hidden in this construction. The full field is represented through the fixed exact isometry $`J_t`$. Performing $`J_t`$ on a physical optical device is a separate task with separate resources.
 
@@ -102,9 +102,9 @@ E_n=|u_n\rangle\langle u_n|
 
 Its derivation and circuit are in [noncommuting_observer.md](noncommuting_observer.md). A count of observer labels, an encoding of the unique observer's position, a uniform-position projection, and a known coin implement it with polynomially many known gates in the word length and its bit precision. No physical bath decoder is invoked.
 
-The dedicated one-bit algorithm avoids the full word register altogether. It samples the main count from $`\operatorname{Pois}(t)`$ conditioned on $`n\leq n_{\max}`$ and uses a coherent position register of dimension $`n+1`$. The normalized count weights are generated by the mode-based recurrence (R2), rounded to a finite dyadic law, and sampled classically. With $`b=O(\log((n_{\max}+1)/\eta))`$ fractional bits plus input and arithmetic guard bits, the conservative accumulated weight error $`O((n_{\max}+1)^2 2^{-b})`$ can be made smaller than any specified sampling allowance $`\eta`$. The table has $`O(n_{\max}b)`$ classical storage, with guard-bit costs charged as above.
+The dedicated one-bit algorithm avoids the full word register altogether. It samples the main count from $`\mathrm{Pois}(t)`$ conditioned on $`n\leq n_{\max}`$ and uses a coherent position register of dimension $`n+1`$. The normalized count weights are generated by the mode-based recurrence (R2), rounded to a finite dyadic law, and sampled classically. With $`b=O(\log((n_{\max}+1)/\eta))`$ fractional bits plus input and arithmetic guard bits, the conservative accumulated weight error $`O((n_{\max}+1)^2 2^{-b})`$ can be made smaller than any specified sampling allowance $`\eta`$. The table has $`O(n_{\max}b)`$ classical storage, with guard-bit costs charged as above.
 
-After sampling $`n`$, compile only its $`O(n+1)`$-rotation uniform-position loader and inverse. The algorithm needs exactly $`n`$ unknown-unitary queries, $`O((n+1)\operatorname{polylog}((n+2)/\epsilon))`$ known gates, and $`O(\log(n+2))`$ ancillary qubits. It does not compile or coherently access a bank of loaders for every possible $`n`$. A Poisson cutoff gives a worst-case query bound $`O(t+\log(1/\epsilon)+1)`$. The retained-count and omitted-count channels form a convex mixture, so conditioning changes the full bit/reference channel by at most $`e^{-1}\Pr(\operatorname{Pois}(t)>n_{\max})`$ in half diamond distance.
+After sampling $`n`$, compile only its $`O(n+1)`$-rotation uniform-position loader and inverse. The algorithm needs exactly $`n`$ unknown-unitary queries, $`O((n+1)\mathrm{polylog}((n+2)/\epsilon))`$ known gates, and $`O(\log(n+2))`$ ancillary qubits. It does not compile or coherently access a bank of loaders for every possible $`n`$. A Poisson cutoff gives a worst-case query bound $`O(t+\log(1/\epsilon)+1)`$. The retained-count and omitted-count channels form a convex mixture, so conditioning changes the full bit/reference channel by at most $`e^{-1}\Pr(\mathrm{Pois}(t)>n_{\max})`$ in half diamond distance.
 
 These statements concern sampling one bit with the correct probability. They do not claim to prepare the complete reduced observer field in a logarithmic-size register.
 

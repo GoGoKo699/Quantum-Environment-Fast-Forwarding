@@ -32,7 +32,7 @@ The vacuum input defines an isometry $`V_t:S\to S\otimes\mathcal F_t`$, where
 $`\mathcal F_t=\bigotimes_j\mathcal F(L^2([0,t]))`$. The field-output channel is
 
 ```math
-\Gamma_t(\rho)=\operatorname{Tr}_S[V_t\rho V_t^\dagger].
+\Gamma_t(\rho)=\mathrm{Tr}_S[V_t\rho V_t^\dagger].
 \tag{M4}
 ```
 
@@ -63,7 +63,7 @@ d_\diamond(\Phi,\Psi)
 =\frac12\|\Phi-\Psi\|_\diamond
 =\frac12\sup_{\rho_{SR}}
 \left\|
-\bigl[(\Phi-\Psi)\otimes\operatorname{id}_R\bigr](\rho_{SR})
+\bigl[(\Phi-\Psi)\otimes\mathrm{id}_R\bigr](\rho_{SR})
 \right\|_1.
 \tag{M6}
 ```
@@ -108,7 +108,7 @@ For $`\Lambda>0`$, put $`p_j=\lambda_j/\Lambda`$ and $`\mu=\Lambda t`$. Then
 
 ```math
 V_t|\psi\rangle
-=\sum_{N=0}^{\infty}\sqrt{\operatorname{Pois}_{\mu}(N)}
+=\sum_{N=0}^{\infty}\sqrt{\mathrm{Pois}_{\mu}(N)}
 \sum_{w\in[m]^N}\sqrt{\prod_{k=1}^{N}p_{j_k}}\,
 U_{j_N}\cdots U_{j_1}|\psi\rangle
 \otimes|N,w\rangle_{\mathcal F}.
