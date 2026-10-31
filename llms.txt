@@ -1,0 +1,38 @@
+# Quantum Environment Fast Forwarding
+
+This repository studies the query cost of the specified vacuum output of zero-Hamiltonian Lindblad dynamics with unitary jumps. The system is discarded; arbitrary untouched input references are preserved. Access is through phase-referenced controlled forward unitary oracles. Error means half diamond distance.
+
+## Scientific route
+
+- README.md: question, principal bounds, scope and reproduction command.
+- science/model.md: fixed Hudson–Parthasarathy vacuum dilation, oracle contract, chronological trajectories and exact field encodings.
+- science/centered_environment.md: removal of a common system power, input-independent Poisson truncation, commuting jumps and the single-jump lower bound.
+- science/noncommuting_observer.md: one-photon temporal-mode kernel, explicit constant gap, hybrid lower bound, measurement pullback and matching one-bit sampler.
+- science/gaussian_connection.md: exact fixed representation change from a Gaussian phase clock to the unitary-jump complementary output, with its distinct access requirements.
+- science/resources.md: count loading, classical compilation and storage, finite-precision gates, individual oracles versus SELECT, and representation-dependent costs.
+- science/interpretation.md: relation among system, field and measured-record outputs, established reduced-system benchmark and physical meaning.
+- references/RELATED_WORK.md: closest phase-estimation, superreplication, simulation and output-metrology sources, with their model differences.
+- references/references.bib: bibliographic identities and inspected source versions.
+- verification/README.md: what the finite checks establish, reproduction instructions and tested boundaries.
+
+## Questions and entry points
+
+Why can the field be simulated with square-root query cost? Read the centering lemma and the reference-uniform truncation argument in science/centered_environment.md.
+
+Why does a weak observer restore linear cost? Read the exact temporal-mode event, constant gap and insertion-position interpretation in science/noncommuting_observer.md.
+
+Does this require many observer photons or an unbounded observable? No. The hard family has observer mean count one and uses a photon-number-conserving projector. The observer rate is horizon dependent, 1/t.
+
+Can the same result be inferred from photon counting? The complete classical marked counting process is independent of the unknown unitaries. The relevant quantum coherences are specified in science/model.md and science/interpretation.md.
+
+What does the algorithm actually output? A declared digital field code, or the specific measurement bit. Consult science/model.md before interpreting output registers. A general chronological word code is not a product over physical baths.
+
+What is charged? Unknown-unitary queries, known gates, classical preparation/storage and output registers are distinguished in science/resources.md. No QRAM or free arbitrary amplitude-loading oracle is assumed. Physical photon production and arbitrary decoding are separate tasks.
+
+What is already known? Read references/RELATED_WORK.md. Typical phase windows, Gaussian phase clocks, system-channel simulation and output metrology are inherited ingredients. The project does not claim priority for their general principles.
+
+How are the formulas checked? Install verification/requirements.txt and run verification/audit_environment.py. Its explicit validation failures remain active under Python optimization. The committed results are finite numerical and exact-arithmetic checks, not proofs of general complexity statements.
+
+## Interpretation constraints
+
+Keep the fixed dilation, controlled-oracle phase convention, discarded system, reference-uniform error, horizon-indexed observer rate and field encoding attached to each claim. Do not infer physical emission speed, optimal precision dependence, or universal hardness of noncommuting jumps. Do not transfer the bath trace to a label-deletion operation. The H=0 parameter in the specified dilation does not remove coherent drift after changing the Lindblad representation.
