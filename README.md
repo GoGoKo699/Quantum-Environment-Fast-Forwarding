@@ -26,7 +26,7 @@ V_\mu|\psi\rangle
 U^n|\psi\rangle\otimes|n\rangle_f.
 ```
 
-After restricting the Poisson count to a window $`[a,b]`$, replace $`U^n`$ by $`U^{n-a}`$. The removed common factor acts only on the system that is discarded. This leaves the field-reference state unchanged within the window. An omitted probability $`\delta`$ contributes at most $`\sqrt\delta`$ to half diamond error. For $`0<\epsilon\leq1/2`$, the resulting forward-query bound is
+After restricting the Poisson count to a window $`[a,b]`$, replace $`U^n`$ by $`U^{n-a}`$. The removed common factor acts only on the system that is discarded. This leaves the field-reference state unchanged within the window. An omitted probability $`\delta`$ contributes at most $`\sqrt\delta`$ to half diamond error. For $`0\lt \epsilon\leq1/2`$, the resulting forward-query bound is
 
 ```math
 q=O\!\left(

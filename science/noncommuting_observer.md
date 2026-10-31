@@ -3,10 +3,11 @@
 Consider a qubit with zero Hamiltonian and two unitary jumps,
 
 ```math
-L_1=U_\theta=e^{-i\theta X},\qquad
-L_2=t^{-1/2}Z,\qquad
-\rho_0=|0\rangle\langle0|,\qquad t\geq2\pi.
-\tag{O1}
+\begin{aligned}
+L_1&=U_\theta=e^{-i\theta X},\qquad L_2=t^{-1/2}Z,\\
+\rho_0&=|0\rangle\langle0|,\qquad t\geq2\pi.
+\end{aligned}
+\qquad\text{(O1)}
 ```
 
 The unknown input is the phase-referenced controlled oracle for $`U_\theta`$. The second jump and its rate $`1/t`$ are known. Both fields start in vacuum. The total observation time is $`t`$, so the mean photon number in the observer field is exactly one for every $`\theta`$. This is a horizon-indexed family of generators. The second rate is not held fixed as $`t`$ increases.
@@ -15,8 +16,8 @@ Let $`\rho_\theta^{\mathrm{obs}}(t)`$ be the physical state of the second field 
 
 ```math
 P_f=|1_f\rangle\langle1_f|,\qquad
-f(s)=t^{-1/2}\ \ (0<s<t).
-\tag{O2}
+f(s)=t^{-1/2}\ \ (0\lt s\lt t).
+\qquad\text{(O2)}
 ```
 
 Here $`|1_f\rangle`$ means exactly one photon in the uniform temporal mode and vacuum in every orthogonal observer mode. The associated event is more restrictive than “one observer photon.”
@@ -27,7 +28,7 @@ Project the observer field onto its one-photon sector. For a fixed main-field ph
 
 ```math
 U_\theta^{N-N_s}Z U_\theta^{N_s}|0\rangle.
-\tag{O3}
+\qquad\text{(O3)}
 ```
 
 Tracing out the main field pairs identical main-photon histories on the bra and ket. For $`s\leq u`$, the overlap of the two system amplitudes is
@@ -42,7 +43,7 @@ U_\theta^{N_s}|0\rangle\\
 =\langle0|U_\theta^{-2(N_u-N_s)}|0\rangle
 =\cos\!\left(2\theta(N_u-N_s)\right).
 \end{aligned}
-\tag{O4}
+\qquad\text{(O4)}
 ```
 
 This uses $`ZU_\theta Z=U_\theta^\dagger`$. The increment $`N_u-N_s`$ is Poisson with mean $`u-s`$. The two observer jump amplitudes contribute $`1/t`$, while observer no-jump survival on the two branches contributes $`e^{-1}`$. Therefore the exact one-photon kernel is
@@ -54,7 +55,7 @@ This uses $`ZU_\theta Z=U_\theta^\dagger`$. The increment $`N_u-N_s`$ is Poisson
 \exp\!\left[
 |s-u|\left(e^{i2\theta}-1\right)
 \right].
-\tag{O5}
+\qquad\text{(O5)}
 ```
 
 Its diagonal integrates to $`e^{-1}`$, as required by the observer's Poisson count of mean one.
@@ -72,7 +73,7 @@ p_\theta(t)
 F(z)=2\mathrm{Re}\frac{e^z-1-z}{z^2},\qquad
 z=t(e^{i2\theta}-1),
 \end{aligned}
-\tag{O6}
+\qquad\text{(O6)}
 ```
 
 where $`F(0)=1`$ by continuity. In particular, $`p_0(t)=e^{-1}`$.
@@ -84,7 +85,7 @@ Set $`\beta=2\pi`$ and choose
 ```math
 \theta_t=\frac12\arcsin\frac{\beta}{t},\qquad
 a=t-\sqrt{t^2-\beta^2}.
-\tag{O7}
+\qquad\text{(O7)}
 ```
 
 Then $`0\leq a\leq\beta`$ and $`z=-a+i\beta`$. Since $`e^{i\beta}=1`$, the probability factor becomes
@@ -97,7 +98,7 @@ F(-a+i\beta)
 {(a^2+\beta^2)^2}
 \right]
 \leq\frac1\beta+\frac2{\beta^2}.
-\tag{O8}
+\qquad\text{(O8)}
 ```
 
 The first term is bounded using $`2a\beta\leq a^2+\beta^2`$. The second uses $`0\leq1-e^{-a}\leq1`$ and $`0\leq a\leq\beta`$. It follows that
@@ -108,7 +109,7 @@ p_0(t)-p_{\theta_t}(t)
 g:=
 e^{-1}\left(1-\frac1{2\pi}-\frac1{2\pi^2}\right)
 =0.2906926194\ldots.
-\tag{O9}
+\qquad\text{(O9)}
 ```
 
 Because $`P_f`$ is a projector, (O9) is immediately a trace-distance lower bound for the two observer states. It is also a lower bound for the full two-field outputs, by monotonicity under the physical partial trace.
@@ -124,17 +125,17 @@ The two controlled oracle inputs obey
 =2\sin(\theta_t/2)
 \leq\theta_t
 \leq\frac{\pi^2}{2t}.
-\tag{O10}
+\qquad\text{(O10)}
 ```
 
 The last inequality follows from $`\arcsin x\leq\pi x/2`$ on $`[0,1]`$.
 In a $`q`$-query circuit, replace the oracle calls one at a time. Each replacement changes the final state in trace distance by at most the operator-norm distance in (O10), even with ancillary systems. Contractivity under the known intervening channels and the triangle inequality give a total change at most $`q\pi^2/(2t)`$. This is the usual quantum query hybrid argument [BBBV97]. Measurements and adaptive classical control can be purified, and controlled inverse queries have the same norm difference.
 
-If a simulator has half diamond error at most $`\epsilon<g/2`$ for both inputs, its outputs have trace distance at least $`g-2\epsilon`$. Thus
+If a simulator has half diamond error at most $`\epsilon\lt g/2`$ for both inputs, its outputs have trace distance at least $`g-2\epsilon`$. Thus
 
 ```math
 q\geq \frac{2(g-2\epsilon)}{\pi^2}\,t.
-\tag{O11}
+\qquad\text{(O11)}
 ```
 
 The same bound holds for an algorithm whose only required output is a classical bit with acceptance probability within $`\epsilon`$ of $`p_\theta(t)`$. It therefore does not depend on a choice of digital field encoding. It also lower-bounds any full-field or reduced-observer simulator for which the stated measurement is available with no additional unknown-unitary queries.
@@ -149,11 +150,11 @@ The count-and-word code in [model.md](model.md) does not factor across the two f
 
 Restrict to $`n`$ photons in the main field and exactly one in the observer field. A word is determined by the observer position $`k\in\{0,\ldots,n\}`$, meaning that $`k`$ main photons precede it. Let $`|w_k\rangle_{\mathcal F}`$ be its normalized field state from (M8).
 
-Write the ordered main-photon times as $`0<x_1<\cdots<x_n<t`$, set $`x_0=0`$, $`x_{n+1}=t`$, and define the gaps $`g_k=x_{k+1}-x_k`$. Projecting the observer coordinate onto $`f`$ sends $`|w_k\rangle_{\mathcal F}`$ to the main-field amplitude
+Write the ordered main-photon times as $`0\lt x_1\lt \cdots\lt x_n\lt t`$, set $`x_0=0`$, $`x_{n+1}=t`$, and define the gaps $`g_k=x_{k+1}-x_k`$. Projecting the observer coordinate onto $`f`$ sends $`|w_k\rangle_{\mathcal F}`$ to the main-field amplitude
 
 ```math
 \sqrt{\frac{(n+1)!}{t^{n+2}}}\,g_k.
-\tag{O12}
+\qquad\text{(O12)}
 ```
 
 Under the uniform measure on the ordered main-time simplex, the normalized gaps are Dirichlet distributed with all parameters equal to one. Their second moment follows by elementary integration:
@@ -161,7 +162,7 @@ Under the uniform measure on the ordered main-time simplex, the normalized gaps 
 ```math
 \mathbb E[g_kg_\ell]
 =\frac{t^2(1+\delta_{k\ell})}{(n+1)(n+2)}.
-\tag{O13}
+\qquad\text{(O13)}
 ```
 
 The simplex volume is $`t^n/n!`$. Combining (O12) and (O13), the exact pullback of $`I_{\mathrm{main}}\otimes P_f`$ is the effect
@@ -174,7 +175,7 @@ E_n&=\frac{I+\mathbf J}{n+2}
 +\frac{I-|u_n\rangle\langle u_n|}{n+2},\\
 |u_n\rangle&=\frac1{\sqrt{n+1}}\sum_{k=0}^{n}|k\rangle,
 \end{aligned}
-\tag{O14}
+\qquad\text{(O14)}
 ```
 
 where $`\mathbf J`$ is the all-ones matrix. The effect vanishes in sectors with any other observer count, and it is block diagonal in the main count $`n`$.
@@ -196,14 +197,14 @@ The joint state before the last measurement is
 \frac1{\sqrt{n+1}}
 \sum_{k=0}^{n}|k\rangle\,
 U_\theta^{n-k}ZU_\theta^k|\psi\rangle.
-\tag{O15}
+\qquad\text{(O15)}
 ```
 
 This is precisely the conditional system-word state for those field counts. The construction also respects an input reference.
 
 For a worst-case query bound, choose $`n_{\max}`$ and sample the Poisson law conditioned on $`n\leq n_{\max}`$. Its finite list is computed by starting at the Poisson mode, applying the stable outward recurrence, and normalizing the retained weights. This avoids a separate calculation of the exponentially small factor $`e^{-t}`$.
 
-Write $`\delta=\Pr(\mathrm{Pois}(t)>n_{\max})`$. The observer-one channel is a convex mixture of its normalized retained-count and omitted-count channels, with weights $`1-\delta`$ and $`\delta`$. Replacing this mixture by its retained-count channel changes half diamond distance by at most $`\delta`$. The observer-one branch has weight $`e^{-1}`$, so the total bit/reference channel error is at most $`e^{-1}\delta`$. This argument is uniform over input references because each normalized count-sector average is a channel.
+Write $`\delta=\Pr(\mathrm{Pois}(t)\gt n_{\max})`$. The observer-one channel is a convex mixture of its normalized retained-count and omitted-count channels, with weights $`1-\delta`$ and $`\delta`$. Replacing this mixture by its retained-count channel changes half diamond distance by at most $`\delta`$. The observer-one branch has weight $`e^{-1}`$, so the total bit/reference channel error is at most $`e^{-1}\delta`$. This argument is uniform over input references because each normalized count-sector average is a channel.
 
 A concrete error allocation takes $`\delta\leq\epsilon/4`$, bounds the combined error of all classical sampling and known coins by $`\epsilon/4`$, and allocates $`\epsilon/4`$ each to the uniform-position preparation and its final projection circuit. The elementary Poisson bound then gives $`n_{\max}=O(t+\log(1/\epsilon)+1)`$. The circuit errors can be bounded in operator norm uniformly over every sampled $`n\leq n_{\max}`$.
 
@@ -226,7 +227,7 @@ p_\theta(t)
 &=e^{-1}\sum_{n=0}^{\infty}
 \mathrm{Pois}_t(n)\,h_n(\theta).
 \end{aligned}
-\tag{O16}
+\qquad\text{(O16)}
 ```
 
 It follows directly from (O14) and the Gram matrix of (O15), and agrees with the continuous-time expression (O6).

@@ -4,7 +4,7 @@ This connection identifies the complementary output obtained from an earlier Gau
 
 ## A known change of representation fixes the field convention
 
-Let $`H`$ be Hermitian and $`\tau>0`$. Write
+Let $`H`$ be Hermitian and $`\tau\gt 0`$. Write
 
 ```math
 g_\tau(s)=(2\pi\tau)^{-1/4}e^{-s^2/(4\tau)},
@@ -116,7 +116,7 @@ The identity explains how the Gaussian phase-clock mechanism reaches this comple
 
 The direct Poisson argument gives its forward-only oracle bound independently. The comparison therefore credits the existing Gaussian purification mechanism while keeping the specified oracle model and output guarantee explicit.
 
-The spectral-mixture formula also explains the fixed-error square-root scale through ordinary phase estimation. For $`t\geq1`$ and $`0<\epsilon<1/2`$, estimate each eigenphase to circular error at most $`\delta=\epsilon/(4\sqrt t)`$ except with probability at most $`\epsilon/4`$, and prepare the corresponding known coherent state. For phase difference $`\Delta`$, the two coherent states have trace distance at most $`\sqrt t\,|\Delta|`$. The phase-estimation contribution to output error is therefore at most $`\epsilon/2`$, uniformly in the eigenphase and hence also for arbitrary input/reference mixtures. Allocate the remaining $`\epsilon/2`$ to known-state preparation. Standard controlled-unitary phase estimation with confidence amplification uses $`O((\sqrt t/\epsilon)\log(1/\epsilon))`$ forward queries; known preparation resources require separate accounting. This elementary comparison does not attain the logarithmic precision dependence of direct Poisson centering.
+The spectral-mixture formula also explains the fixed-error square-root scale through ordinary phase estimation. For $`t\geq1`$ and $`0\lt \epsilon\lt 1/2`$, estimate each eigenphase to circular error at most $`\delta=\epsilon/(4\sqrt t)`$ except with probability at most $`\epsilon/4`$, and prepare the corresponding known coherent state. For phase difference $`\Delta`$, the two coherent states have trace distance at most $`\sqrt t\,|\Delta|`$. The phase-estimation contribution to output error is therefore at most $`\epsilon/2`$, uniformly in the eigenphase and hence also for arbitrary input/reference mixtures. Allocate the remaining $`\epsilon/2`$ to known-state preparation. Standard controlled-unitary phase estimation with confidence amplification uses $`O((\sqrt t/\epsilon)\log(1/\epsilon))`$ forward queries; known preparation resources require separate accounting. This elementary comparison does not attain the logarithmic precision dependence of direct Poisson centering.
 
 ## Reference
 
