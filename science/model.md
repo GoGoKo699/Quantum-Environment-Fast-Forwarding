@@ -3,10 +3,11 @@
 The input is a finite-dimensional quantum system $`S`$, a horizon $`t\geq 0`$, and unitary jump operators with known rates,
 
 ```math
-L_j=\sqrt{\lambda_j}\,U_j,\qquad
-\lambda_j\geq 0,\qquad
-\Lambda=\sum_{j=1}^{m}\lambda_j,\qquad H=0.
-\tag{M1}
+\begin{aligned}
+L_j&=\sqrt{\lambda_j}\,U_j,\qquad\lambda_j\geq0,\\
+\Lambda&=\sum_{j=1}^{m}\lambda_j,\qquad H=0.
+\end{aligned}
+\qquad\text{(M1)}
 ```
 
 The associated system generator is
@@ -14,7 +15,7 @@ The associated system generator is
 ```math
 \mathcal L(\rho)=\sum_{j=1}^{m}\lambda_j
 \bigl(U_j\rho U_j^\dagger-\rho\bigr).
-\tag{M2}
+\qquad\text{(M2)}
 ```
 
 Each jump couples to a separate bosonic field initially in vacuum. The coupling phases and the field labels are part of the input model. In the Hudson–Parthasarathy convention with identity scattering, the joint unitary satisfies
@@ -25,15 +26,15 @@ d\mathsf U_s=
 \sum_j\left(L_j\,dB_j^\dagger(s)-L_j^\dagger\,dB_j(s)\right)
 -\frac12\sum_jL_j^\dagger L_j\,ds
 \right]\mathsf U_s.
-\tag{M3}
+\qquad\text{(M3)}
 ```
 
 The vacuum input defines an isometry $`V_t:S\to S\otimes\mathcal F_t`$, where
 $`\mathcal F_t=\bigotimes_j\mathcal F(L^2([0,t]))`$. The field-output channel is
 
 ```math
-\Gamma_t(\rho)=\operatorname{Tr}_S[V_t\rho V_t^\dagger].
-\tag{M4}
+\Gamma_t(\rho)=\mathrm{Tr}_S[V_t\rho V_t^\dagger].
+\qquad\text{(M4)}
 ```
 
 The condition $`H=0`$ fixes this microscopic representation; it does not exclude coherent drift in another representation of the same reduced generator. The [interpretation](interpretation.md#zero-explicit-hamiltonian-does-not-remove-coherent-drift) gives the exact identity for the hard qubit family.
@@ -49,7 +50,7 @@ An unknown unitary is supplied through its phase-referenced controlled oracle,
 ```math
 C(U)=|0\rangle\langle0|\otimes I+
 |1\rangle\langle1|\otimes U.
-\tag{M5}
+\qquad\text{(M5)}
 ```
 
 One use of this oracle counts as one query. Conditions computed from known registers can be attached to its control. The centered algorithm uses forward queries only. The lower bounds remain valid if controlled inverse queries are also available. For several unknown jumps, individual controlled oracles and a coherent SELECT oracle are different access models. Any use of SELECT is stated explicitly.
@@ -63,9 +64,9 @@ d_\diamond(\Phi,\Psi)
 =\frac12\|\Phi-\Psi\|_\diamond
 =\frac12\sup_{\rho_{SR}}
 \left\|
-\bigl[(\Phi-\Psi)\otimes\operatorname{id}_R\bigr](\rho_{SR})
+\bigl[(\Phi-\Psi)\otimes\mathrm{id}_R\bigr](\rho_{SR})
 \right\|_1.
-\tag{M6}
+\qquad\text{(M6)}
 ```
 
 The supremum can be taken over a reference of dimension $`\dim S`$. For a digital output with a declared isometric embedding $`J`$ into the physical field, its channel $`\mathcal A`$ is compared with $`\Gamma_t`$ through
@@ -76,21 +77,23 @@ Known rates and times are classical inputs with a finite description, or are spe
 
 ## Exact trajectory expansion
 
-If $`t=0`$ or $`\Lambda=0`$, the output is vacuum and requires no queries. The trajectory formulas and uniform temporal modes below assume $`t>0`$; the normalized label probabilities additionally assume $`\Lambda>0`$.
+If $`t=0`$ or $`\Lambda=0`$, the output is vacuum and requires no queries. The trajectory formulas and uniform temporal modes below assume $`t\gt 0`$; the normalized label probabilities additionally assume $`\Lambda\gt 0`$.
 
 Since $`\sum_jL_j^\dagger L_j=\Lambda I`$, the no-jump evolution is the scalar $`e^{-\Lambda s/2}`$. Let
-$`\Delta_N(t)=\{0<s_1<\cdots<s_N<t\}`$, and let
+$`\Delta_N(t)=\{0\lt s_1\lt \cdots\lt s_N\lt t\}`$, and let
 $`w=(j_1,\ldots,j_N)`$ record the jump labels in chronological order. The vacuum expansion is
 
 ```math
+\begin{aligned}
 V_t|\psi\rangle
-=e^{-\Lambda t/2}
+&=e^{-\Lambda t/2}
 \sum_{N=0}^{\infty}\ \sum_{w\in[m]^N}
-\left(\prod_{k=1}^{N}\sqrt{\lambda_{j_k}}\right)
-\int_{\Delta_N(t)}
+\left(\prod_{k=1}^{N}\sqrt{\lambda_{j_k}}\right)\\
+&\quad{}\times\int_{\Delta_N(t)}
 U_{j_N}\cdots U_{j_1}|\psi\rangle
 \otimes|\mathbf s,w\rangle\,d^N\mathbf s .
-\tag{M7}
+\end{aligned}
+\qquad\text{(M7)}
 ```
 
 The field kets in this integral are delta normalized in ordered times. Define the normalized field states
@@ -99,20 +102,23 @@ The field kets in this integral are delta normalized in ordered times. Define th
 |N,w\rangle_{\mathcal F}
 =\sqrt{\frac{N!}{t^N}}
 \int_{\Delta_N(t)}|\mathbf s,w\rangle\,d^N\mathbf s ,
-\tag{M8}
+\qquad\text{(M8)}
 ```
 
 with the vacuum convention when $`N=0`$. States with different total counts or chronological label words are orthonormal: their time-label configurations have disjoint support, except on sets of measure zero.
 
-For $`\Lambda>0`$, put $`p_j=\lambda_j/\Lambda`$ and $`\mu=\Lambda t`$. Then
+For $`\Lambda\gt 0`$, put $`p_j=\lambda_j/\Lambda`$ and $`\mu=\Lambda t`$. Then
 
 ```math
+\begin{aligned}
 V_t|\psi\rangle
-=\sum_{N=0}^{\infty}\sqrt{\operatorname{Pois}_{\mu}(N)}
-\sum_{w\in[m]^N}\sqrt{\prod_{k=1}^{N}p_{j_k}}\,
+&=\sum_{N=0}^{\infty}\sqrt{\mathrm{Pois}_{\mu}(N)}
+\sum_{w\in[m]^N}\sqrt{\prod_{k=1}^{N}p_{j_k}}\\
+&\quad{}\times
 U_{j_N}\cdots U_{j_1}|\psi\rangle
 \otimes|N,w\rangle_{\mathcal F}.
-\tag{M9}
+\end{aligned}
+\qquad\text{(M9)}
 ```
 
 Equation (M9) defines a fixed isometry $`J_t`$ from a digital count-and-word space into the full field. It involves no time-grid approximation.

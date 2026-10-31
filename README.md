@@ -26,7 +26,7 @@ V_\mu|\psi\rangle
 U^n|\psi\rangle\otimes|n\rangle_f.
 ```
 
-After restricting the Poisson count to a window $`[a,b]`$, replace $`U^n`$ by $`U^{n-a}`$. The removed common factor acts only on the system that is discarded. This leaves the field-reference state unchanged within the window. An omitted probability $`\delta`$ contributes at most $`\sqrt\delta`$ to half diamond error. For $`0<\epsilon\leq1/2`$, the resulting forward-query bound is
+After restricting the Poisson count to a window $`[a,b]`$, replace $`U^n`$ by $`U^{n-a}`$. The removed common factor acts only on the system that is discarded. This leaves the field-reference state unchanged within the window. An omitted probability $`\delta`$ contributes at most $`\sqrt\delta`$ to half diamond error. For $`0\lt \epsilon\leq1/2`$, the resulting forward-query bound is
 
 ```math
 q=O\!\left(
@@ -48,7 +48,7 @@ The second field has mean photon number one. Its probability of exactly one phot
 
 ```math
 p_\theta(t)
-=e^{-1}\,2\operatorname{Re}\frac{e^z-1-z}{z^2},
+=e^{-1}\,2\mathrm{Re}\frac{e^z-1-z}{z^2},
 \qquad z=t(e^{2i\theta}-1),
 ```
 
@@ -71,6 +71,14 @@ Start with the [model and output contract](science/model.md), then follow [count
 | Independent finite checks and their limits | [Verification](verification/README.md) |
 
 The square-root scale, phase estimation, and typical-window compression have close precedents. The [comparison](references/RELATED_WORK.md) credits those ingredients and distinguishes them from the specified forward-oracle channel construction and its noncommuting observer boundary.
+
+## Learn the project
+
+The single educational anchor is **John Watrous, *The Theory of Quantum Information* (2018)**. The [Watrous bridge](learning/watrous_bridge.md) connects channels, discarded systems, reference-preserving error and measurement distinguishability to the field-output problem. It translates the notation and supplies the steps from the book's finite-dimensional framework to the project's declared field encodings and finite truncations.
+
+The [30-milestone map](learning/milestones.md) follows the project's scientific story. Its **12 background/preliminaries milestones** assemble the output and resource contract; its **18 narrative/innovation milestones** connect count centering, the observer measurement and the resulting complexity separation. Each milestone records its central question, understanding target, dependencies, conceptual connection and source pointers.
+
+Start with the [learning overview](learning/README.md), use the bridge alongside the milestone map, or take the direct scientific route above. The [LLM reading guide](llms.txt) maps reader intentions to the authoritative account.
 
 ## Reproduce the checks
 

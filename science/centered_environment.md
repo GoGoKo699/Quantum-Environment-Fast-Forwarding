@@ -1,29 +1,33 @@
 # Centering a commuting jump count
 
-We use the phase-referenced forward oracle and half diamond convention in [model.md](model.md). The Hamiltonian is zero. The input system may be entangled with an arbitrary reference, and only the field is returned. The accuracy-dependent upper bounds below are stated for $`0<\epsilon\leq1/2`$.
+We use the phase-referenced forward oracle and half diamond convention in [model.md](model.md). The Hamiltonian is zero. The input system may be entangled with an arbitrary reference, and only the field is returned. The accuracy-dependent upper bounds below are stated for $`0\lt \epsilon\leq1/2`$.
 
 ## One unitary jump
 
 Let $`L=\sqrt{\lambda}\,U`$ and $`\mu=\lambda t`$. In the uniform temporal-mode number code, the exact isometry is
 
 ```math
+\begin{aligned}
 V_\mu|\psi\rangle
-=\sum_{n=0}^{\infty}\sqrt{p_\mu(n)}\,
-U^n|\psi\rangle\otimes|n\rangle,\qquad
-p_\mu(n)=e^{-\mu}\frac{\mu^n}{n!}.
-\tag{C1}
+&=\sum_{n=0}^{\infty}\sqrt{p_\mu(n)}\,
+U^n|\psi\rangle\otimes|n\rangle,\\
+p_\mu(n)&=e^{-\mu}\frac{\mu^n}{n!}.
+\end{aligned}
+\qquad\text{(C1)}
 ```
 
 For any input $`\rho_{SR}`$, the field-reference output has blocks
 
 ```math
-\bigl[(\Gamma_\mu\otimes\operatorname{id}_R)(\rho_{SR})\bigr]_{n,m}
-=\sqrt{p_\mu(n)p_\mu(m)}\,
-\operatorname{Tr}_S
+\begin{aligned}
+&\bigl[(\Gamma_\mu\otimes\mathrm{id}_R)(\rho_{SR})\bigr]_{n,m}\\
+&\quad=\sqrt{p_\mu(n)p_\mu(m)}\,
+\mathrm{Tr}_S
 \left[
 (U^n\otimes I_R)\rho_{SR}(U^{-m}\otimes I_R)
 \right].
-\tag{C2}
+\end{aligned}
+\qquad\text{(C2)}
 ```
 
 The occurrence of $`U^{-m}`$ in this formula is a bra-side adjoint, not an inverse-oracle requirement.
@@ -31,14 +35,14 @@ The occurrence of $`U^{-m}`$ in this formula is a bra-side adjoint, not an inver
 ### Centering lemma
 
 Choose integers $`0\leq a\leq b`$, let
-$`A=\{a,\ldots,b\}`$, and write $`P_A=\sum_{n\in A}p_\mu(n)>0`$.
+$`A=\{a,\ldots,b\}`$, and write $`P_A=\sum_{n\in A}p_\mu(n)\gt 0`$.
 The normalized truncated isometry is
 
 ```math
 V_A|\psi\rangle
 =\sum_{n=a}^{b}\sqrt{\frac{p_\mu(n)}{P_A}}\,
 U^n|\psi\rangle\otimes|n\rangle.
-\tag{C3}
+\qquad\text{(C3)}
 ```
 
 Define
@@ -47,19 +51,21 @@ Define
 \widehat V_A|\psi\rangle
 =\sum_{n=a}^{b}\sqrt{\frac{p_\mu(n)}{P_A}}\,
 U^{n-a}|\psi\rangle\otimes|n\rangle.
-\tag{C4}
+\qquad\text{(C4)}
 ```
 
 Then $`V_A=(U^a\otimes I)\widehat V_A`$. For every reference-assisted input,
 
 ```math
-\operatorname{Tr}_S
+\begin{aligned}
+&\mathrm{Tr}_S
 \left[(V_A\otimes I_R)\rho_{SR}(V_A^\dagger\otimes I_R)\right]
-=
-\operatorname{Tr}_S
+\\
+&\quad=\mathrm{Tr}_S
 \left[(\widehat V_A\otimes I_R)\rho_{SR}
 (\widehat V_A^\dagger\otimes I_R)\right].
-\tag{C5}
+\end{aligned}
+\qquad\text{(C5)}
 ```
 
 This is invariance of the partial trace under a unitary acting only on the discarded system. It holds for mixed and entangled inputs. Thus the truncated field channel can be implemented with $`b-a`$ forward queries. Prepare the amplitudes in (C4), and, for each $`j=1,\ldots,b-a`$, apply $`U`$ conditioned on $`n\geq a+j`$. The number of active queries on branch $`n`$ is exactly $`n-a`$.
@@ -73,42 +79,45 @@ For any purified input $`|\psi\rangle_{SR}`$,
 ```math
 \langle\psi|(V_\mu^\dagger V_A\otimes I_R)|\psi\rangle
 =\sqrt{P_A}.
-\tag{C6}
+\qquad\text{(C6)}
 ```
 
 The two pure joint outputs therefore have trace distance $`\sqrt{1-P_A}`$. Taking the partial trace over the system cannot increase it. Purifying a mixed input gives the same conclusion, and hence
 
 ```math
 d_\diamond(\Gamma_\mu,\Gamma_A)\leq \sqrt{1-P_A}.
-\tag{C7}
+\qquad\text{(C7)}
 ```
 
 No input-dependent success probability or postselection is used. The algorithm directly prepares the normalized truncated amplitudes.
 
 ### Explicit concentration window
 
-For $`0<\epsilon\leq1/2`$ and $`\mu>0`$, set
+For $`0\lt \epsilon\leq1/2`$ and $`\mu\gt 0`$, set
 
 ```math
-x=\log\frac{8}{\epsilon^2},\qquad
-d=\sqrt{2\mu x},\qquad
-a=\max\{0,\lfloor\mu-d\rfloor\},\qquad
-b=\lceil\mu+d+2x\rceil.
-\tag{C8}
+\begin{aligned}
+x&=\log\frac{8}{\epsilon^2},\qquad
+d=\sqrt{2\mu x},\\
+a&=\max\{0,\lfloor\mu-d\rfloor\},\\
+b&=\lceil\mu+d+2x\rceil.
+\end{aligned}
+\qquad\text{(C8)}
 ```
 
-If $`N\sim\operatorname{Pois}(\mu)`$, then
+If $`N\sim\mathrm{Pois}(\mu)`$, then
 
 ```math
-\Pr(N<a)+\Pr(N>b)\leq 2e^{-x}=\epsilon^2/4,
-\qquad
-b-a\leq 2\sqrt{2\mu x}+2x+2.
-\tag{C9}
+\begin{aligned}
+\Pr(N\lt a)+\Pr(N\gt b)&\leq 2e^{-x}=\epsilon^2/4,\\
+b-a&\leq 2\sqrt{2\mu x}+2x+2.
+\end{aligned}
+\qquad\text{(C9)}
 ```
 
 For completeness, the Poisson moment-generating function gives
 $`\log\mathbb E e^{s(N-\mu)}=\mu(e^s-1-s)`$.
-For $`0<s<1`$,
+For $`0\lt s\lt 1`$,
 $`e^s-1-s\leq s^2/[2(1-s)]`$, and Chernoff's bound gives
 $`\Pr(N-\mu\geq v)\leq\exp[-v^2/(2(\mu+v))]`$.
 Taking $`v=d+2x`$ proves the upper-tail claim. For the lower tail,
@@ -123,7 +132,7 @@ q=O\!\left(
 \sqrt{\mu\log(1/\epsilon)}
 +\log(1/\epsilon)+1
 \right).
-\tag{C10}
+\qquad\text{(C10)}
 ```
 
 The $`\mu=0`$ output is vacuum and needs no queries. The same is true whenever one deliberately uses the vacuum approximation and its exact error bound is sufficient; (C10) is a general upper bound, not an optimal formula at very small $`\mu`$.
@@ -138,7 +147,7 @@ V_t|\psi\rangle
 \left(\prod_j\sqrt{p_{\mu_j}(n_j)}\right)
 \left(\prod_jU_j^{n_j}\right)|\psi\rangle
 \otimes|\mathbf n\rangle.
-\tag{C11}
+\qquad\text{(C11)}
 ```
 
 Here $`|\mathbf n\rangle`$ denotes $`\bigotimes_j|n_j\rangle_{f_t,j}`$.
@@ -151,7 +160,7 @@ Choose count windows $`A_j=[a_j,b_j]`$. On their product, commutativity gives
 =
 \left(\prod_jU_j^{a_j}\right)
 \left(\prod_jU_j^{n_j-a_j}\right).
-\tag{C12}
+\qquad\text{(C12)}
 ```
 
 The first factor acts only on the discarded system and cancels as in (C5). Preparing the independent truncated count states and applying the second factor costs
@@ -163,10 +172,10 @@ $`x=\log(8m_+/\epsilon^2)`$ in each window yields a total omitted probability at
 ```math
 q=
 O\!\left(
-\sum_{j:\mu_j>0}\sqrt{\mu_j\log(m_+/\epsilon)}
+\sum_{j:\mu_j\gt 0}\sqrt{\mu_j\log(m_+/\epsilon)}
 +m_+\log(m_+/\epsilon)+m_+
 \right).
-\tag{C13}
+\qquad\text{(C13)}
 ```
 
 Equivalently, the square-root term is at most
@@ -183,21 +192,23 @@ $`U_\theta=e^{-i\theta Z}`$, and input $`|0\rangle`$. Equation (C1) makes the fi
 ```math
 |\alpha_\theta\rangle,\qquad
 \alpha_\theta=\sqrt{\mu}\,e^{-i\theta}.
-\tag{C14}
+\qquad\text{(C14)}
 ```
 
 For $`\theta=\mu^{-1/2}`$ and $`\mu\geq1`$,
 
 ```math
-D\!\left(
+\begin{aligned}
+&D\!\left(
 |\alpha_0\rangle\langle\alpha_0|,
 |\alpha_\theta\rangle\langle\alpha_\theta|
-\right)
-=
+\right)\\
+&\quad=
 \sqrt{1-\exp[-4\mu\sin^2(\theta/2)]}
 \geq
 \sqrt{1-e^{-4/\pi^2}}.
-\tag{C15}
+\end{aligned}
+\qquad\text{(C15)}
 ```
 
 The inequality uses $`\sin(\theta/2)\geq\theta/\pi`$.

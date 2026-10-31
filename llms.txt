@@ -15,6 +15,18 @@ This repository studies the query cost of the specified vacuum output of zero-Ha
 - references/references.bib: bibliographic identities and inspected source versions.
 - verification/README.md: what the finite checks establish, reproduction instructions and tested boundaries.
 
+## Learning and reader routes
+
+The single educational anchor is John Watrous, The Theory of Quantum Information (Cambridge University Press, 2018). The author page is https://cs.uwaterloo.ca/~watrous/TQI/. The book supplies finite-dimensional channels, Stinespring representations, measurements and state/channel distance. The project's field model, finite-window algorithms and query arguments are developed in the repository.
+
+- Story route: README.md, then science/model.md, science/centered_environment.md, science/noncommuting_observer.md and science/interpretation.md. Track which output is retained and what each query can access.
+- Study route: learning/README.md, learning/watrous_bridge.md and learning/milestones.md. The common map has exactly 30 milestones: M01–M12 are background/preliminaries and M13–M30 are narrative/innovation. Its targets and dependency order belong to the project.
+- Theorem route: science/model.md for the contract; science/centered_environment.md for the uniform-reference upper and lower bounds; science/noncommuting_observer.md for the kernel, bounded event and exact one-bit sampler; science/resources.md for the complete resource account.
+- Source comparison route: references/RELATED_WORK.md and science/gaussian_connection.md. Separate Watrous's foundational role from research citations for phase estimation, typical-window compression, coherent trajectory preparation and output metrology.
+- Reproduction route: verification/README.md, verification/requirements.txt and verification/audit_environment.py. Finite computations support the written proofs within the documented scope.
+
+Use the anchor's relevant sections alongside the local explanations. Keep the finite-register foundations distinct from the specified infinite field and its explicitly controlled finite truncations. Learning examples illustrate the canonical results; their assumptions do not replace the full channel and oracle contract.
+
 ## Questions and entry points
 
 Why can the field be simulated with square-root query cost? Read the centering lemma and the reference-uniform truncation argument in science/centered_environment.md.
