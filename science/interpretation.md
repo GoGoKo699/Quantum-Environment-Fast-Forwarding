@@ -157,6 +157,14 @@ Over time $`t`$, the main jumps can therefore produce a finite coherent rotation
 
 Equations (P11) and (P12) are identities of the reduced generator. Shifting a jump by an identity changes the specified field dilation. In particular, a displacement depending on the unknown $`\theta`$ is not a free oracle-independent encoding change. The simulation task and its access model remain those of the original coupling $`L=U_\theta`$, with the known observer $`t^{-1/2}Z`$.
 
+## Hermitian reflection primitives and field-only information
+
+Restricting every supplied jump to a reflection changes the single-primitive field law from square-root time to a constant query count: only photon-count parity changes its system action. For an arbitrary pair, coherent cancellation leaves a diffusive line endpoint. Three reflections can already retain a parity computation in their field. The [reflection theorem](reflection_threshold.md) fixes the common physical and oracle contract and proves the constant/square-root/linear worst-case hierarchy.
+
+The system and field lower witnesses must be distinguished. In the sister's original tree, the unknown answer at each endpoint is removable by a system-coordinate change fixing the root input, so its emitted field has no hidden-bit dependence. Replacing missing leaf transitions by a known $`Z`$ makes the field keep the parity through interference between photon-number sectors. This is a new specified dilation with a field-visible signal, not a consequence of simply discarding the system in the old proof.
+
+The [pair dark-port witness](reflection_pair.md) uses number-conserving bath mixing and counting. The [triple witness](reflection_tree.md) requires the declared field phase reference; complete total-number dephasing makes its parity states identical. The three-reflection linear lower bound also requires a target dimension growing exponentially in time. These limitations coexist with exactly fixed rates $`1/k`$ and zero Hamiltonian.
+
 ## Reference
 
 - **[GJL26]** M. Gao, Z. Ji, and C. Liu, “Lévy–Khintchine Structure Enables Fast-Forwardable Lindbladian Simulation,” *Physical Review Letters* **137**, 160405 (2026). [DOI](https://doi.org/10.1103/qy4b-gzlq), [arXiv:2511.10253v2](https://arxiv.org/abs/2511.10253v2), Secs. III–IV and Appendices C.3 and D.2.
