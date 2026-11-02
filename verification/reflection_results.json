@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "checks_active_under_optimization": true,
+  "checks": [
+    {
+      "name": "pair",
+      "program": "check_reflection_pair.py",
+      "status": "passed",
+      "report": "reflection_results_pair.json",
+      "summary": {
+        "max_transform_error": 0.0,
+        "max_reflection_error": 1.582025875713435e-16,
+        "max_pgf_error": 2.6645352591003757e-15,
+        "max_count_probability_error": 9.43689570931383e-16,
+        "max_coherent_formula_error": 1.1102230246251565e-16,
+        "max_word_average_series_error": 1.1140300925141704e-15,
+        "bell_reference_pgf_error": 1.1102230246251565e-16
+      }
+    },
+    {
+      "name": "tree",
+      "program": "check_reflection_tree.py",
+      "status": "passed",
+      "report": "reflection_results_tree.json",
+      "summary": {
+        "uniform_analytic_distance_lower_bound": 0.507120335911888,
+        "finite_word_cases": 2,
+        "original_field_blindness_error": 0.0,
+        "number_dephased_field_difference": 0.0
+      }
+    }
+  ],
+  "scope": "Finite diagnostics supplement the analytical proofs; this is not an asymptotic, priority, or hosted-rendering certificate."
+}

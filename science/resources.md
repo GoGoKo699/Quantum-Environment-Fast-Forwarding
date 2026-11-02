@@ -108,6 +108,10 @@ After sampling $`n`$, compile only its $`O(n+1)`$-rotation uniform-position load
 
 These statements concern sampling one bit with the correct probability. They do not claim to prepare the complete reduced observer field in a logarithmic-size register.
 
+## Reflection-word output costs
+
+The [reflection theorem](reflection_threshold.md#an-explicit-output-implementation-and-its-separate-costs) gives one-query, square-root-query and linear-query upper bounds for one, two and three supplied reflections. Its explicit count-and-word implementation still prepares and retains a number of slots proportional to the mean count at fixed precision. Endpoint reduction is performed reversibly and uncomputed; measuring or tracing its garbage would remove field coherence. The theorem accounts for known arithmetic, preparation, synthesis, output registers and any proposed fibre-code conversion separately from unknown SELECT calls.
+
 ## Precision of a known Poisson mean
 
 The primary input model uses exactly specified finite-description means. If a mean is rounded, its effect can also be bounded directly. Compare $`V_\mu`$ and $`V_\nu`$ in the same declared count code, with the same oracle $`U`$ and the same physical temporal-mode embedding. Then

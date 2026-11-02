@@ -66,3 +66,22 @@ The negative controls produce substantial discrepancies when a required conditio
 The finite cases test formulas and their physical representations. The reference-uniform error bounds, arbitrary-input claims, asymptotic query lower bounds and concentration estimates rest on the written proofs. A normalized Choi-matrix comparison is not itself a numerical computation of diamond distance. This suite does not assess external priority, physical field-generation hardware, or the cost of an arbitrary decoder.
 
 The auxiliary computation for the direct one-bit sampler is charged explicitly in [resources.md](../science/resources.md). Its count is sampled classically before the position circuit is compiled. Only the circuit for the sampled count is needed; no library of every possible count-dependent circuit is assumed.
+
+## Reflection-field threshold checks
+
+The [reflection-field theorem](../science/reflection_threshold.md) has a separate finite suite. It leaves the original 112-check audit above unchanged. From the repository root, run:
+
+```bash
+python verification/verify_reflections.py --output verification/reflection_results.json
+```
+
+The aggregate [record](reflection_results.json) links the [pair report](reflection_results_pair.json) and [tree report](reflection_results_tree.json). The runner invokes both check programs, requires their successful exits and passing reports, and writes the three retained reports only after both programs succeed. Use another `--output` path to retain a fresh run. Each program also accepts `--output` independently. Every required comparison raises `ValidationError` explicitly and remains active with `python -O`.
+
+| Program | Independent finite scope | Comparisons and negative controls |
+|---|---|---|
+| [Two-reflection field](check_reflection_pair.py) | Six time/angle cases, four qubit inputs, and a Bell input with an untouched reference | Matrix exponentials of tilted jump generators and count-resolved master equations versus Poisson dark-count laws; the coherent-field projector formula versus a separate finite Poisson word-average series; reflection and bath-rotation identities |
+| [Three-reflection field](check_reflection_tree.py) | Every bit string at tree depths one and two; all 364 chronological words of length at most five in each case; radial chains at times 48, 96, 192 and 480 | Full reduced-field matrices versus endpoint-fibre trace distances; unsigned and signed endpoint weights versus separate radial Feynman–Kac exponentials with explicit omitted Poisson mass; exact field blindness of identity boundary loops; parity-only dependence of leaf-$`Z`$ loops; loss of that signal after total-photon-number dephasing |
+
+The recorded pair run has maximum Poisson generating-function error below $`2.7\times10^{-15}`$ and count-probability error below $`9.5\times10^{-16}`$. The tree run's full field matrices and endpoint-fibre formula differ by less than $`1.3\times10^{-14}`$. Same-parity fields, the original identity-loop fields, and the number-dephased leaf-$`Z`$ fields agree exactly in the enumerated cases. These are finite floating-point diagnostics, with exact equality reported only for the computed arrays; they do not prove the all-time analytical identities.
+
+The analytical trace-distance lower bound $`0.5071203359\ldots`$ and query law $`q\ge t/384`$ are proved in the scientific account. Evaluating their constants in a script is a consistency check, not a numerical proof of asymptotic complexity. This suite makes no claim about an efficient physical field decoder, fixed-dimension linear hardness, external priority or hosted rendering. In particular, the triple witness requires the specified photon-number coherence; a photon-count record alone remains independent of the unknown bits.

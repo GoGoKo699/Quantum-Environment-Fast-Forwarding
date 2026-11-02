@@ -133,6 +133,8 @@ The full-field query upper bound uses (M9) in this exact global code. The observ
 
 An encoding is a representation of a state, not a proposal to emit its photons. The number-register algorithm may represent a field with mean photon number of order $`t`$ using logarithmically many qubits. No statement here reduces the optical energy, physical emission time, or cost of an arbitrary field decoder. The gate bound for the centered algorithm refers to the count code. Converting that output to a word list can require a number of output registers proportional to the mean photon count, even though the conversion uses no unknown-unitary queries.
 
+For phase-fixed Hermitian involutions with equal rates, the [reflection threshold](reflection_threshold.md) specializes this output contract and declares controlled SELECT explicitly. Its field-only lower bounds do not follow merely from reduced-system hardness.
+
 ## Counting records
 
 For unitary jumps, the norm of every conditional system trajectory is independent of its label word and times. Consequently, direct time-resolved photon counting gives independent Poisson point processes of rates $`\lambda_j`$, regardless of the $`U_j`$ and the input state. Coherent field output retains off-diagonal matrix elements between trajectories. These are the information used by the results below.

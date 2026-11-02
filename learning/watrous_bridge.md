@@ -16,8 +16,10 @@ Use these sections as needed for the indicated project step. Reading the entire 
 | [§3.1.1][W3] | Binary state discrimination | [Finite event gap, (O9)](../science/noncommuting_observer.md#a-uniform-constant-gap) |
 | [§3.2.1][W3] | Fidelity and pure-state overlap | [Truncation estimate, (C6)–(C7)](../science/centered_environment.md#reference-uniform-truncation-error) |
 | [§§3.3.1–3.3.3][W3] | Channel discrimination and completely bounded trace norm | [Reference-uniform accuracy, (M6)](../science/model.md#oracle-and-accuracy-conventions) |
+| [§§2.1.3 and 3.1.1][W2W3] | Partial-trace invariance and a measurable output distinction | [Field-blind tree and modified field witness](../science/reflection_tree.md) |
+| [§§2.3.1 and 3.3][W2W3] | Pulling known effects back to encoded channels | [Dark-port count and query hybrid](../science/reflection_pair.md) |
 
-Watrous develops the finite-dimensional channel language used by the algorithms. The vacuum-field dynamics, Poisson concentration, query model and observer calculation are supplied in the project's scientific pages, with their own primary references. Their presence in the bridge does not attribute them to the textbook.
+Watrous develops the finite-dimensional channel language used by the algorithms. The vacuum-field dynamics, Poisson concentration, query model, reflection-word geometry and field-witness calculations are supplied in the scientific pages, with their own primary references. Their presence in the bridge does not attribute them to the textbook.
 
 ## Notation and error conventions
 
@@ -118,14 +120,78 @@ For one main photon there are two positions. The effect has eigenvalue one on th
 
 This yields the matching bit sampler. Sample the main count, prepare a uniform position register, coherently insert the known Pauli among exactly that many forward calls, and perform the effect. Count sampling is legitimate because this particular measurement is block diagonal in counts. The position superposition remains coherent. With a finite conditioned Poisson law, the omitted tail enters as a mixture of channels, giving a bound linear in its probability; it is a different error argument from coherent field truncation. The [direct sampler](../science/noncommuting_observer.md#matching-upper-bound-for-the-one-bit-task) proves the reference-uniform guarantee and its resource bounds.
 
+## Reflection jumps and the sister project
+
+A reflection is a Hermitian unitary: $`R=R^\dagger`$ and $`R^2=I`$. It has only the two possible eigenvalues plus and minus one. A long sequence of identical reflection jumps therefore depends only on whether its count is even or odd. This restriction changes the generic single-unitary field cost from square-root time to one controlled call. The general unitary theorem and the reflection theorem concern different promised inputs.
+
+The sister [Quantum Dephasing Threshold](https://github.com/GoGoKo699/Quantum-Dephasing-Threshold) establishes the constant/square-root/linear threshold when the reduced **system** channel is requested. Its [word reduction](https://github.com/GoGoKo699/Quantum-Dephasing-Threshold/blob/549582272ce6f5a3274be12de1bc5b2f16ed290e/science/pair-simulation.md) supplies the geometry used here. This repository owns the [field-only theorem](../science/reflection_threshold.md), including the physical field embedding and the separate field witnesses. The same educational anchor leads to different project-specific routes.
+
+### Which system simplifications preserve the field?
+
+With $`k`$ supplied reflections, fix $`L_j=R_j/\sqrt{k}`$, total rate one, zero explicit Hamiltonian, identity scattering and zero coupling phases. A phase-referenced controlled SELECT is supplied. The target retains every labelled field and discards the system, with arbitrary input references and half diamond error $`0.1`$. The [reflection theorem](../science/reflection_threshold.md) keeps this contract distinct from the single-unitary forward-oracle model.
+
+For one reflection, prepare the known coherent even/odd count amplitudes and apply $`R`$ on the odd branch. For two reflections, cancelling adjacent equal letters reduces each chronological word to an alternating word. The signed reduced endpoint behaves as a diffusive walk on a line, so a typical reduced length is of order $`\sqrt t`$. These operator identities apply separately to every trajectory amplitude. Retaining the original trajectory labels coherently preserves their interference; sampling the reduced endpoint would generally erase it. The lift of the sister's word identity is routine, rather than a new fast-forwarding primitive.
+
+Watrous supplies the distinction between an isometric representation and a classical mixture. The extra algorithmic step here is reversible word processing: compute the endpoint, apply its reduced word, then erase the endpoint work register. Truncating a coherent endpoint tail requires a square-root probability bound, just as in count centering. Known state preparation, output registers and embedding conversion are still charged separately.
+
+### A dark-port qubit example
+
+For two reflections, set
+
+```math
+R_\pm=\cos\theta\,Z\pm\sin\theta\,X,
+\qquad L_1=R_+/\sqrt2,\quad L_2=R_-/\sqrt2.
+```
+
+A known 50:50 mixing of the bath labels changes the couplings to
+
+```math
+L_b=\cos\theta\,Z,\qquad L_d=\sin\theta\,X.
+```
+
+The dark bath is empty at $`\theta=0`$. Its photon count is Poisson with mean $`t\sin^2\theta`$ for every input; this follows because $`L_d^\dagger L_d=\sin^2\theta I`$. At $`\theta=t^{-1/2}`$, the probability of at least one dark photon remains separated from zero by a constant, whereas the oracle separation is at most $`t^{-1/2}`$. The [pair proof](../science/reflection_pair.md) converts this event gap into the matching square-root query lower bound.
+
+This is a physical field-only measurement. The final system is never read. Mixing bath labels and counting photons preserve total photon number, so the witness survives dephasing between different total-number sectors. In a chronological word encoding, the bath mixer is a known rotation on every photon label; its processing work is proportional to the represented word length. Zero additional unknown queries does not make that processing or the physical optical operation costless.
+
+### Why the original tree argument loses its answer
+
+The sister's original three-reflection construction carries unknown bit parity in a system answer register on a branching tree. From a fixed root input, a change of system coordinates $`G_x`$ removes the unknown edge bits, and it fixes that input. The joint output then differs from the known instance only by $`G_x`$ on the final system. Watrous's partial-trace identity immediately implies that the retained field is exactly unchanged. The system lower bound alone therefore supplies no field lower bound on this input.
+
+The [field proof](../science/reflection_tree.md) replaces the missing leaf transitions by known $`Z`$ actions on the answer qubit. There are still three reflection types with fixed rates $`1/3`$. Removing the edge bits now leaves a sign on leaf-loop emissions determined by the full parity. Within each known endpoint subspace the field is a pure vector. The trace distance of the two full fields is the sum of these subspace weights times their pure-state trace distances. This is a direct use of the textbook's distinguishability and pure-overlap formulas; the tree walk, conditional loop count and local-time estimate are supplied by the project.
+
+The proof gives a field half trace distance at least $`0.5071203359`$. Its oracle reduction uses two bit queries for each controlled SELECT, so the standard parity lower bound yields linear reflection-query cost. The hard dimension grows as $`\exp(\Theta(t))`$. A late-interval measurement of vacuum/one-photon coherence provides an explicit alternative to a general field-state discrimination measurement; its time-splitting map is derived in the same scientific page.
+
+### Which coherence matters?
+
+The three main witnesses retain different coherence:
+
+| Witness | Retained field information | Effect of total-number dephasing |
+|---|---|---|
+| Mean-one observer | Temporal coherence within its one-photon sector | The lower-bound event survives. |
+| Two-reflection dark port | Coherence between bath labels before the fixed mixer | The dark-count lower bound survives. |
+| Modified three-reflection tree | Coherence between total photon numbers | The two parity outputs become identical. |
+
+The last statement is exact. For the two parity field states of the tree witness,
+
+```math
+\rho_1=e^{i\pi N_{\mathrm{total}}}\rho_0e^{-i\pi N_{\mathrm{total}}}.
+```
+
+Complete total-number dephasing removes this distinction. The triple result therefore concerns the specified coherent, phase-referenced field. It does not establish a linear lower bound for number-dephased fields or for fixed system dimension. The phases are fixed physical input data; an unknown-dependent choice of output embedding cannot remove them.
+
+The field threshold and the sister system threshold share a geometry, but their lower-bound outputs have to be checked separately. This is the main conceptual exchange between the two projects. The [30-milestone map](milestones.md) joins it to the original unitary-jump and observer results without counting the routine upper-bound lift as an independent discovery.
+
 ## Connecting the outcomes and the prior work
 
 At fixed small error, classical counting records for the single-jump model require zero unknown-unitary queries at a chosen digital resolution. The worst-case query cost grows as the square root of the mean count for the coherent field and linearly in that mean for the reduced system. Adding the specified known noncommuting observer gives a one-bit task with worst-case linear query cost in time. The first distinction concerns what information is discarded. The second concerns the temporal coherence retained by a particular measurement.
 
 Ordinary forward phase estimation already explains the fixed-error square-root scale of the single-field complement. Earlier work also provides typical-window centering, Gaussian phase-clock purifications and coherent trajectory preparation. The project's [related-work account](../references/RELATED_WORK.md) attributes those mechanisms. The direct Poisson argument adds its explicit precision dependence and resource account in the stated model, while the observer construction supplies the bounded-output obstruction and matching sampler. The [Gaussian comparison](../science/gaussian_connection.md) exhibits a known output conversion and distinguishes it from an uncharged finite implementation.
 
+The reflection-field threshold adds a different restriction to this output comparison: the supplied primitives are Hermitian involutions at equal fixed rates. Its upper lift uses inherited word cancellation, while its pair and modified-tree lower witnesses must remain field-visible after the system is discarded. The [reflection theorem](../science/reflection_threshold.md) and the sister's reduced-system theorem state their respective tasks and proof ownership. Their matching exponents do not imply that a system witness automatically transfers to its complementary output.
+
 These primary research citations support the scientific claims. Watrous remains the sole educational anchor. The [milestone map](milestones.md) joins its foundations to the supplied derivations, ending with the scope of the complete output-dependent comparison. Numerical reproduction in [verification](../verification/README.md) checks finite instances and independent formulations; the analytical pages establish the uniform and asymptotic claims.
 
 [W]: https://cs.uwaterloo.ca/~watrous/TQI/
 [W2]: https://cs.uwaterloo.ca/~watrous/TQI/TQI.2.pdf
 [W3]: https://cs.uwaterloo.ca/~watrous/TQI/TQI.3.pdf
+[W2W3]: https://cs.uwaterloo.ca/~watrous/TQI/

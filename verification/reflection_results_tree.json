@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "finite_word_checks": [
+    {
+      "m": 1,
+      "t": 0.7,
+      "maximum_count": 5,
+      "word_states": 364,
+      "retained_probability": 0.9999099736511174,
+      "poisson_tail": 9.002634888444216e-05,
+      "full_matrix_half_trace_distance": 0.47248178568259197,
+      "endpoint_fibre_half_trace_distance": 0.472481785682604,
+      "feynman_kac_bound_full": 0.1826648540612189,
+      "radial_distance_full": 0.47263365137995705
+    },
+    {
+      "m": 2,
+      "t": 1.2,
+      "maximum_count": 5,
+      "word_states": 364,
+      "retained_probability": 0.9984997749017708,
+      "poisson_tail": 0.0015002250982298904,
+      "full_matrix_half_trace_distance": 0.26615457532731396,
+      "endpoint_fibre_half_trace_distance": 0.26615457532732506,
+      "feynman_kac_bound_full": 0.09309726302186738,
+      "radial_distance_full": 0.2704200091034363
+    }
+  ],
+  "maximum_same_parity_field_matrix_error": 0.0,
+  "maximum_original_identity_loop_field_difference": 0.0,
+  "maximum_total_number_dephased_field_difference": 0.0,
+  "maximum_global_number_phase_identity_error": 0.0,
+  "uniform_analytic_distance_lower_bound": 0.507120335911888,
+  "operational_signal_lower_bound": 0.27366906394670165,
+  "operational_success_after_half_diamond_error_0_1": 0.5368345319733508,
+  "large_time_radial_checks": [
+    {
+      "t": 48,
+      "m": 1,
+      "feynman_kac_distance_lower_bound": 0.999999999999981,
+      "exact_radial_fibre_distance": 1.0000000000000002
+    },
+    {
+      "t": 96,
+      "m": 2,
+      "feynman_kac_distance_lower_bound": 0.9999999999999797,
+      "exact_radial_fibre_distance": 0.9999999999999982
+    },
+    {
+      "t": 192,
+      "m": 4,
+      "feynman_kac_distance_lower_bound": 0.9999999999999689,
+      "exact_radial_fibre_distance": 1.0000000000000007
+    },
+    {
+      "t": 480,
+      "m": 10,
+      "feynman_kac_distance_lower_bound": 1.0,
+      "exact_radial_fibre_distance": 0.9999999999999676
+    }
+  ],
+  "scope": "Finite numerical checks supplement, but do not prove, the analytical lower bound."
+}
