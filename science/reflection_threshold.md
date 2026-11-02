@@ -14,7 +14,7 @@ R_j&=R_j^\dagger,\qquad R_j^2=I,\\
 L_j&=\frac{R_j}{\sqrt{k}},\qquad
 H=0,\qquad \lambda_j=\frac1k.
 \end{aligned}
-\tag{R1}
+\qquad\text{(R1)}
 ```
 
 The total jump rate is one. Time $`t`$ is physical time multiplied by that total rate. Use separate labelled bosonic fields, vacuum input, identity scattering and the Hudson–Parthasarathy convention in [model.md](model.md). The displayed matrices, including their signs, fix the jump phases; they are not supplied only modulo a global phase.
@@ -23,7 +23,7 @@ The target is the entire emitted field, after discarding the final system,
 
 ```math
 \Gamma_{t,R}(\rho)=\mathrm{Tr}_S[V_{t,R}\rho V_{t,R}^\dagger].
-\tag{R2}
+\qquad\text{(R2)}
 ```
 
 The input may be entangled with an untouched reference. Accuracy means [half diamond distance](model.md#oracle-and-accuracy-conventions).
@@ -32,7 +32,7 @@ The oracle is the phase-referenced coherent selection
 
 ```math
 S_R=\sum_{j=1}^k|j\rangle\langle j|\otimes R_j.
-\tag{R3}
+\qquad\text{(R3)}
 ```
 
 One call to SELECT, its inverse, or an externally controlled version costs one query. Unused binary labels act as identity. Since the supplied matrices are reflections, inverse SELECT equals SELECT. Algorithms may use arbitrary known operations, ancillas, randomness, measurements and adaptive control; the number of serial calls is bounded on every branch. No matrix description, power oracle or oracle-dependent encoding is supplied.
@@ -50,7 +50,7 @@ V_{t,R}|\psi\rangle
  \sqrt{\frac{e^{-t}t^N}{N!k^N}}\,
  R_{w_N}\cdots R_{w_1}|\psi\rangle\otimes J_t|N,w\rangle .
 \end{aligned}
-\tag{R4}
+\qquad\text{(R4)}
 ```
 
 This embedding is independent of the unknown reflections. It includes every ordered emission time without a time grid and generally does not factor across baths. Deleting labels is not a physical bath trace.
@@ -65,7 +65,7 @@ Q_1^F(t,0.1)=1,\qquad
 Q_2^F(t,0.1)=\Theta(\sqrt t),\qquad
 Q_3^F(t,0.1)=\Theta(t).
 }
-\tag{R5}
+\qquad\text{(R5)}
 ```
 
 The same time exponents hold for every smaller fixed positive error, with constants allowed to depend on it.
@@ -80,20 +80,20 @@ This counts supplied oracle primitives, not an invariant Lindblad rank. The thre
 
 ## Routine coherent word reduction
 
-The cancellation $`R_jR_j=I`$ does not alter any field register. Let $`g=\operatorname{red}(w)`$ be the abstract reduced word and $`W_g`$ its represented operator. Grouping the orthonormal word states in (R4) gives
+The cancellation $`R_jR_j=I`$ does not alter any field register. Let $`g=\mathrm{red}(w)`$ be the abstract reduced word and $`W_g`$ its represented operator. Grouping the orthonormal word states in (R4) gives
 
 ```math
 \begin{aligned}
-p_g(t)&=\sum_{\substack{N,w:\\\operatorname{red}(w)=g}}
+p_g(t)&=\sum_{\substack{N,w:\\\mathrm{red}(w)=g}}
        \frac{e^{-t}t^N}{N!k^N},\\
 |\chi_g(t)\rangle
 &=\frac1{\sqrt{p_g(t)}}
- \sum_{\substack{N,w:\\\operatorname{red}(w)=g}}
+ \sum_{\substack{N,w:\\\mathrm{red}(w)=g}}
  \sqrt{\frac{e^{-t}t^N}{N!k^N}}\,J_t|N,w\rangle,\\
 V_{t,R}
 &=\sum_g\sqrt{p_g(t)}\,W_g\otimes|\chi_g(t)\rangle .
 \end{aligned}
-\tag{R6}
+\qquad\text{(R6)}
 ```
 
 Terms with zero weight are omitted. The $`\chi_g`$ are orthonormal and independent of the unknown matrices. The abstract grouping remains valid even when the actual tuple has additional relations.
@@ -105,7 +105,7 @@ For one reflection, $`g`$ is just even or odd parity. Its weights are
 ```math
 p_{\rm e}=\frac{1+e^{-2t}}2,\qquad
 p_{\rm o}=\frac{1-e^{-2t}}2.
-\tag{R7}
+\qquad\text{(R7)}
 ```
 
 Prepare their known amplitudes and apply $`R`$ on the odd branch. This uses one controlled query, even for the joint isometry in the two-fibre encoding.
@@ -115,21 +115,21 @@ For two reflections $`A,B`$, the abstract Cayley graph is a line. Give its endpo
 ```math
 T_A(s)=s+(-1)^s,\qquad
 T_B(s)=s-(-1)^s.
-\tag{R8}
+\qquad\text{(R8)}
 ```
 
 Uniform independent labels induce a symmetric continuous-time random walk on this line. Its law is $`p_s(t)=e^{-t}I_{|s|}(t)`$, and the reduced alternating word has length $`|s|`$. The inherited Bernstein tail estimate is
 
 ```math
 \Pr\{|S_t|\geq\sqrt{2tu}+u\}\leq2e^{-u}.
-\tag{R9}
+\qquad\text{(R9)}
 ```
 
 For a coherent restriction to $`|s|\lt M`$ with omitted probability $`\delta`$, normalizing the retained amplitudes gives an isometry whose overlap with the exact isometry is $`\sqrt{1-\delta}`$, uniformly on every reference-assisted input. The resulting half diamond error is at most $`\sqrt\delta`$. Taking $`u=\log(C/\epsilon^2)`$ for a sufficiently large absolute constant $`C`$ yields
 
 ```math
 q=O\!\left(\sqrt{t\log(1/\epsilon)}+\log(1/\epsilon)\right).
-\tag{R10}
+\qquad\text{(R10)}
 ```
 
 For three reflections, the general [coherent word construction](resources.md#general-exact-word-code) with a Poisson count cutoff gives $`O(t+\log(1/\epsilon))`$ queries.
@@ -151,7 +151,7 @@ At fixed $`k`$, conservative costs are:
 | Unknown serial queries | One for one reflection; (R10) for a pair; $`O(N_{\max})`$ for three |
 | Output registers | $`O(N_{\max}\log(k+1)+\log(N_{\max}+1))`$ qubits |
 | Pair endpoint arithmetic | $`O(N_{\max}\log(N_{\max}+1))`$ known reversible gates, including uncomputation |
-| Preparation, synthesis and compilation | $`O(N_{\max}\operatorname{poly}(B,\log((N_{\max}+2)/\epsilon)))`$ known work, conservatively |
+| Preparation, synthesis and compilation | $`O(N_{\max}\mathrm{poly}(B,\log((N_{\max}+2)/\epsilon)))`$ known work, conservatively |
 
 Here $`B`$ is the bit length of the known classical parameters. The preparation uses explicitly compiled Poisson lists and finite rotations, with the arithmetic and synthesis conventions of [resources.md](resources.md); no QRAM or free amplitude loader is assumed. Coherent occupancy and label controls are charged. These bounds are sufficient and are not claimed gate optimal.
 
@@ -166,7 +166,7 @@ D(\rho_F^Z,\rho_F^X)
 =\sqrt{p_{\rm e}p_{\rm o}}
 =\frac{\sqrt{1-e^{-4t}}}{2}
 \geq\frac{\sqrt{1-e^{-4}}}{2}\gt0.495.
-\tag{R11}
+\qquad\text{(R11)}
 ```
 
 A zero-query procedure gives the same output for both unknown oracles. It cannot approximate both within half diamond error $`0.1`$. Together with the one-query construction, this proves the first part of (R5).

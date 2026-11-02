@@ -54,8 +54,8 @@ reference. One rigorous derivation uses the count generating operator:
 Taking the trace gives
 
 ```math
-\frac{d}{dt}\operatorname{Tr}e^{t\mathcal K_z}(\rho)
- =\sin^2\theta(z-1)\operatorname{Tr}e^{t\mathcal K_z}(\rho),
+\frac{d}{dt}\mathrm{Tr}e^{t\mathcal K_z}(\rho)
+ =\sin^2\theta(z-1)\mathrm{Tr}e^{t\mathcal K_z}(\rho),
 \qquad
 \mathbb E z^{N_d}=e^{t\sin^2\theta(z-1)}.
 ```

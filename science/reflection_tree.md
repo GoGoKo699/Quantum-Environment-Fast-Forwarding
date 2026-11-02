@@ -135,7 +135,7 @@ Let $`\tau_m`$ be the first hitting time of a leaf. Up to that time, the depth w
 
 ```math
 Y_s=\mathrm{Pois}(2s/3)-\mathrm{Pois}(s/3),
-\quad \mathbb E Y_s=s/3,\quad\operatorname{Var}Y_s=s.
+\quad \mathbb E Y_s=s/3,\quad\mathrm{Var}Y_s=s.
 ```
 
 Taking $`s=t-1`$, using $`m\leq t/48`$, and applying Chebyshev,
